@@ -1,0 +1,137 @@
+ion-content {
+    --background: #c4c4c4;
+}
+
+.buscador-historial {
+    --background: #f5f5f5;
+    --color: #111111;
+    --placeholder-color: #666666;
+    --icon-color: #111111;
+    --border-radius: 10px;
+    padding: 0 0 12px 0;
+}
+
+.filtros-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.filtro-select {
+    flex: 1;
+    border-radius: 8px;
+    padding: 0 12px;
+    min-height: 36px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid #888888;
+}
+
+.filtro-verde {
+    background: #5b8763;
+    color: #111111;
+}
+
+.filtro-gris {
+    background: #d9d9d9;
+    color: #111111;
+}
+
+ion-list {
+    background: transparent;
+    padding: 0;
+}
+
+.historial-card {
+    margin: 0 0 12px 0;
+    --background: #f5f5f5;
+    border-radius: 12px;
+    border: 1px solid #9e9e9e;
+    box-shadow: none;
+}
+
+.card-flex {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.check-icon {
+    font-size: 32px;
+    color: #111111;
+    flex-shrink: 0;
+}
+
+.info h2 {
+    color: #111111;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0 0 4px 0;
+}
+
+.info p {
+    color: #333333;
+    font-size: 0.85rem;
+    margin: 0 0 6px 0;
+}
+
+.badge-tiempo {
+    display: inline-block;
+    background: #a6a6a6;
+    color: #111111;
+    font-size: 0.75rem;
+    padding: 2px 10px;
+    border-radius: 12px;
+}
+
+ion-fab-button.btn-verde {
+    --background: #23532d;
+    --background-activated: #1a3f22;
+    --color: #ffffff;
+    --border-radius: 10px;
+}
+
+ion-fab-button.btn-verde::part(native) {
+    border-radius: 10px;
+}
+
+.fecha-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-right: 12px;
+    font-size: 0.9rem;
+    color: #333333;
+}
+
+.fecha-header ion-icon {
+    font-size: 20px;
+}
+
+.zona-zoom {
+    transform-origin: top center;
+    transition: transform 0.1s ease-out;
+}
+
+.barra-zoom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #e0e0e0;
+    color: #111111;
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.btn-reset-zoom {
+    background: #23532d;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}

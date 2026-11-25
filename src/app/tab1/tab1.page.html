@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mi Agenda</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <span>{{ fechaActual }}</span>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Pull-to-Refresh (Parte C de la guía) -->
+  <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle"
+      pullingText="Desliza para recargar"
+      refreshingSpinner="crescent"
+      refreshingText="Actualizando agenda..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Selector Hoy / Semana / Mes -->
+  <ion-segment [value]="filtroActivo" (ionChange)="cambiarFiltro($event)" [scrollable]="true">
+    <ion-segment-button value="hoy">
+      <ion-label>Hoy</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="semana">
+      <ion-label>Semana</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="mes">
+      <ion-label>Mes</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="3meses">
+      <ion-label>3 meses</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="6meses">
+      <ion-label>6 meses</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="12meses">
+      <ion-label>12 meses</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Lista interactiva con Swipe (Parte B de la guía) -->
+  <ion-list>
+    @for (act of actividades; track act.id) {
+    <ion-item-sliding>
+      <!-- Deslizar a la izquierda para completar -->
+      <ion-item-options side="start">
+        <ion-item-option color="success" (click)="completar(act.id)">
+          <ion-icon slot="icon-only" name="checkmark-done"></ion-icon>
+        </ion-item-option>
+        
+      </ion-item-options>
+      
+
+      <!-- Tarjeta de actividad -->
+      <ion-item lines="none">
+        <ion-card #tarjetaActividad class="actividad-card">
+          <ion-card-content class="card-flex">
+            <ion-icon [name]="act.icono" size="large" slot="start"></ion-icon>
+            <div class="info">
+              <h2>{{ act.titulo }}</h2>
+              <p>{{ act.categoria }}</p>
+              <small>{{ act.fecha }}</small>
+              <div>
+                <span class="badge-restante" [class.vencida]="estaVencida(act.fechaISO)">
+                  {{ calcularTiempoRestante(act.fechaISO) }}
+                </span>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+
+      <!-- Deslizar a la derecha para eliminar -->
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="eliminar(act.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    } @empty {
+      <div class="sin-actividades">
+        <p>No hay actividades programadas para este período.</p>
+      </div>
+    }
+  </ion-list>
+
+  <!-- Botón flotante (Parte D de la guía) -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="btn-verde" routerLink="/nueva-actividad">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

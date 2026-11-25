@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Ajustes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Panel único con todas las opciones -->
+  <ion-list lines="full" class="panel-unico">
+    <ion-list-header>PREFERENCIAS</ion-list-header>
+
+    <ion-item button (click)="alternarNotificaciones()" class="opcion-item">
+      <ion-icon slot="start" name="notifications-outline"></ion-icon>
+      <ion-label>
+        <h2>Notificaciones:</h2>
+      </ion-label>
+      <span slot="end" class="valor-opcion">
+        {{ notificacionesActivas ? 'Activadas' : 'Desactivadas' }}
+      </span>
+      <ion-icon slot="end" name="arrow-forward-outline" class="flecha"></ion-icon>
+    </ion-item>
+
+    <ion-item button (click)="abrirOpcion('Horario de descanso')" class="opcion-item">
+      <ion-icon slot="start" name="moon-outline"></ion-icon>
+      <ion-label>
+        <h2>Horario de descanso:</h2>
+        <p>10:00 pm - 07:00 am</p>
+      </ion-label>
+      <ion-icon slot="end" name="arrow-forward-outline" class="flecha"></ion-icon>
+    </ion-item>
+
+    <ion-item button (click)="abrirOpcion('Privacidad de avisos')" class="opcion-item">
+      <ion-icon slot="start" name="shield-outline"></ion-icon>
+      <ion-label>
+        <h2>Privacidad de avisos</h2>
+      </ion-label>
+      <ion-icon slot="end" name="arrow-forward-outline" class="flecha"></ion-icon>
+    </ion-item>
+
+    <ion-item button (click)="abrirOpcion('Calendarios')" class="opcion-item">
+      <ion-icon slot="start" name="calendar-outline"></ion-icon>
+      <ion-label>
+        <h2>Calendarios:</h2>
+      </ion-label>
+      <span slot="end" class="valor-opcion">Sin conectar</span>
+      <ion-icon slot="end" name="arrow-forward-outline" class="flecha"></ion-icon>
+    </ion-item>
+
+    <ion-item button (click)="abrirOpcion('Idioma')" class="opcion-item">
+      <ion-icon slot="start" name="globe-outline"></ion-icon>
+      <ion-label>
+        <h2>Idioma:</h2>
+      </ion-label>
+      <span slot="end" class="valor-opcion">Español</span>
+      <ion-icon slot="end" name="arrow-forward-outline" class="flecha"></ion-icon>
+    </ion-item>
+
+    <ion-item button (click)="abrirOpcion('Cuenta')" class="opcion-item">
+      <ion-icon slot="start" name="person-outline"></ion-icon>
+      <ion-label>
+        <h2>Cuenta:</h2>
+      </ion-label>
+      <span slot="end" class="valor-opcion">Sesión iniciada</span>
+      <ion-icon slot="end" name="arrow-forward-outline" class="flecha"></ion-icon>
+    </ion-item>
+
+    <ion-list-header class="header-info">INFORMACIÓN</ion-list-header>
+
+    <ion-item button (click)="mostrarInfo('Ayuda y soporte', 'Escríbenos a soporte@agendaintegral.com para asistencia técnica.')" class="opcion-item">
+      <ion-icon slot="start" name="help-circle-outline" class="icono-verde"></ion-icon>
+      <ion-label>
+        <h2>Ayuda y soporte</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-item button (click)="mostrarInfo('Política de privacidad', 'Tus actividades se almacenan de forma segura y privada en tu dispositivo.')" class="opcion-item">
+      <ion-icon slot="start" name="shield-checkmark-outline" class="icono-verde"></ion-icon>
+      <ion-label>
+        <h2>Política de privacidad</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-item button lines="none" (click)="mostrarInfo('Acerca de la aplicación', 'Agenda Integral v1.0.0 — Organizador personal desarrollado con Ionic y Angular.')" class="opcion-item">
+      <ion-icon slot="start" name="information-circle-outline" class="icono-verde"></ion-icon>
+      <ion-label>
+        <h2>Acerca de la aplicación</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Único botón de Cerrar Sesión -->
+  <div class="contenedor-salir">
+    <ion-button class="btn-cerrar-sesion" (click)="cerrarSesion()">
+      CERRAR SESIÓN
+    </ion-button>
+  </div>
+</ion-content>

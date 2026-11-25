@@ -1,0 +1,109 @@
+ion-content {
+  --background: #c4c4c4; // Fondo gris del boceto
+}
+
+.btn-verde {
+  --background: #23532d;
+  --background-activated: #1a3f22;
+  --color: #ffffff;
+  --border-radius: 10px;
+}
+
+.actividad-card {
+  width: 100%;
+  margin: 6px 0;
+  --background: #f5f5f5;
+  border-radius: 12px;
+}
+
+.card-flex {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+ion-list,
+ion-item {
+  --background: transparent;
+  background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+.info h2 {
+  color: #111111;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.info p,
+.info small {
+  color: #444444;
+  margin: 0;
+}
+
+.card-flex ion-icon {
+  color: #111111;
+}
+
+ion-segment {
+  --background: transparent;
+  gap: 8px;
+}
+
+ion-segment-button {
+  --background: #d9d9d9;
+  --background-checked: #5b8763; // Verde sombreado al seleccionar
+  --color: #111111;
+  --color-checked: #111111;
+  --indicator-color: transparent; // Oculta la línea azul inferior
+  border: 1px solid #777777;
+  border-radius: 8px;
+  min-height: 36px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.sin-actividades {
+  text-align: center;
+  color: #555555;
+  padding: 32px 16px;
+  font-size: 0.95rem;
+}
+
+.badge-restante {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #d8eadb;
+  color: #1e4d2b;
+}
+
+.badge-restante.vencida {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+ion-refresher {
+  background: #c4c4c4;
+}
+
+ion-refresher-content {
+  --color: #1e4d2b;
+  color: #1e4d2b;
+
+  .refresher-pulling-icon,
+  .refresher-refreshing-icon,
+  .refresher-pulling-text,
+  .refresher-refreshing-text {
+    color: #1e4d2b;
+    font-weight: 600;
+  }
+
+  ion-spinner {
+    color: #1e4d2b;
+  }
+}

@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nueva Actividad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="guardarActividad()">
+    <!-- Título -->
+    <div class="campo">
+      <label class="etiqueta" for="titulo">Título <span class="asterisco">*</span></label>
+      <ion-item lines="none" class="input-caja">
+        <ion-input
+          id="titulo"
+          [(ngModel)]="actividad.titulo"
+          name="titulo"
+          placeholder="Examen de Programación"
+          required
+        >
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <!-- Categoría -->
+    <div class="campo">
+      <label class="etiqueta" for="categoria">Categoría <span class="asterisco">*</span></label>
+      <ion-item lines="none" class="input-caja">
+        <ion-select id="categoria" [(ngModel)]="actividad.categoria" name="categoria" interface="popover">
+          <ion-select-option value="Estudios">Estudios</ion-select-option>
+          <ion-select-option value="Trabajo">Trabajo</ion-select-option>
+          <ion-select-option value="Compras">Compras</ion-select-option>
+          <ion-select-option value="Gastos Hogar">Gastos Hogar</ion-select-option>
+          <ion-select-option value="Personal">Personal</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <!-- Tipo -->
+    <div class="campo">
+      <label class="etiqueta" for="tipo">Tipo</label>
+      <ion-item lines="none" class="input-caja">
+        <ion-select id="tipo" [(ngModel)]="actividad.tipo" name="tipo" interface="popover">
+          <ion-select-option value="Evento">Evento</ion-select-option>
+          <ion-select-option value="Tarea">Tarea</ion-select-option>
+          <ion-select-option value="Recordatorio">Recordatorio</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <!-- Fecha y hora -->
+    <div class="campo">
+      <label class="etiqueta" for="fechaHora">Fecha y hora <span class="asterisco">*</span></label>
+      <ion-item lines="none" class="input-caja">
+        <ion-input id="fechaHora" type="datetime-local" [(ngModel)]="actividad.fechaHora" name="fechaHora" required>
+        </ion-input>
+        <ion-icon name="calendar-outline" slot="end"></ion-icon>
+      </ion-item>
+    </div>
+
+    <!-- Recordatorio -->
+    <div class="campo">
+      <label class="etiqueta" for="recordatorio">Recordatorio</label>
+      <ion-item lines="none" class="input-caja">
+        <ion-select id="recordatorio" [(ngModel)]="actividad.recordatorio" name="recordatorio" interface="popover">
+          <ion-select-option value="15 minutos antes">15 minutos antes</ion-select-option>
+          <ion-select-option value="1 hora antes">1 hora antes</ion-select-option>
+          <ion-select-option value="1 día antes">1 día antes</ion-select-option>
+          <ion-select-option value="Sin recordatorio">Sin recordatorio</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <!-- Botón Guardar -->
+    <div class="acciones">
+      <ion-button type="submit" expand="block" class="btn-verde"> Guardar Actividad </ion-button>
+      <p class="nota-obligatoria">Los campos con * son obligatorios</p>
+    </div>
+  </form>
+</ion-content>

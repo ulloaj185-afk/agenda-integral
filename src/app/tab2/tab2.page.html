@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Historial</ion-title>
+    <div slot="end" class="fecha-header">
+      <ion-icon name="calendar-outline"></ion-icon>
+      <span>{{ fechaActual }}</span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Buscador -->
+  <ion-searchbar
+    [(ngModel)]="textoBusqueda"
+    placeholder="Buscar actividades realizadas"
+    class="buscador-historial"
+  >
+  </ion-searchbar>
+
+  <!-- Filtros Fecha y Categoría -->
+  <div class="filtros-row">
+    <ion-select [(ngModel)]="filtroFecha" interface="popover" class="filtro-select filtro-verde">
+      <ion-select-option value="recientes">Fecha</ion-select-option>
+      <ion-select-option value="mes">Último mes</ion-select-option>
+      <ion-select-option value="antiguas">Más antiguas</ion-select-option>
+    </ion-select>
+
+    <ion-select [(ngModel)]="filtroCategoria" interface="popover" class="filtro-select filtro-gris">
+      <ion-select-option value="todas">Categoría</ion-select-option>
+      <ion-select-option value="Estudios">Estudios</ion-select-option>
+      <ion-select-option value="Trabajo">Trabajo</ion-select-option>
+      <ion-select-option value="Personal">Personal</ion-select-option>
+      <ion-select-option value="Salud">Salud</ion-select-option>
+    </ion-select>
+  </div>
+
+  <!-- Controles de Zoom (Pinch / Rueda / Botones) -->
+  <div class="barra-zoom">
+    <span>Zoom: {{ (escalaZoom * 100).toFixed(0) }}%</span>
+    <div class="botones-zoom">
+      <button type="button" class="btn-reset-zoom" (click)="cambiarZoom(-0.1)">-</button>
+      <button type="button" class="btn-reset-zoom" (click)="reiniciarZoom()">100%</button>
+      <button type="button" class="btn-reset-zoom" (click)="cambiarZoom(0.1)">+</button>
+    </div>
+  </div>
+
+  <!-- Lista de actividades completadas con Pinch/Zoom -->
+  <div
+    class="zona-zoom"
+    [style.zoom]="escalaZoom"
+    (touchstart)="alIniciarToque($event)"
+    (touchmove)="alMoverToque($event)"
+    (wheel)="alUsarRueda($event)"
+  >
+    <ion-list>
+      @for (item of historialFiltrado; track item.id) {
+        <ion-card class="historial-card" button (click)="abrirOpcionesHistorial(item)">
+          <ion-card-content class="card-flex">
+            <ion-icon name="checkbox-outline" class="check-icon"></ion-icon>
+            <div class="info">
+              <h2>{{ item.titulo }}</h2>
+              <p>Completado: {{ item.fechaCompletado }}</p>
+              <span class="badge-tiempo">{{ calcularTiempoAtras(item.fechaISO) }}</span>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      }
+    </ion-list>
+  </div>
+
+  <!-- Botón flotante para Nueva Actividad -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="btn-verde" routerLink="/nueva-actividad">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

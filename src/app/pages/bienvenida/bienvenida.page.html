@@ -1,0 +1,72 @@
+<ion-content class="ion-padding">
+  <div class="contenedor-bienvenida">
+    <!-- Encabezado -->
+    <div class="header-logo">
+      <h1>Agenda Integral</h1>
+      <div class="fecha-subtitulo">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <span>{{ fechaActual }}</span>
+      </div>
+    </div>
+
+    <!-- Formulario -->
+    <form (ngSubmit)="iniciarSesion()" class="formulario-login">
+      <div class="campo">
+        <label class="etiqueta" for="correo">Correo</label>
+        <ion-item lines="none" class="input-caja">
+          <ion-input
+            id="correo"
+            type="email"
+            [(ngModel)]="correo"
+            name="correo"
+            placeholder="correo@estudiante.com"
+          >
+          </ion-input>
+        </ion-item>
+      </div>
+
+      <div class="campo">
+        <label class="etiqueta" for="password">Contraseña</label>
+        <ion-item lines="none" class="input-caja">
+          <ion-input
+            id="password"
+            [type]="mostrarPassword ? 'text' : 'password'"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="********"
+          >
+          </ion-input>
+          <ion-button
+            fill="clear"
+            size="small"
+            slot="end"
+            class="icono-ojo"
+            type="button"
+            [attr.aria-label]="mostrarPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+            (click)="alternarPassword()"
+          >
+            <ion-icon slot="icon-only" [name]="mostrarPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </div>
+
+      <!-- Botón Iniciar Sesión -->
+      <div class="acciones-principales">
+        <ion-button type="submit" expand="block" class="btn-verde">
+          Iniciar Sesión
+        </ion-button>
+        <ion-button fill="clear" type="button" class="link-recuperar" (click)="recuperarPassword()">
+          Recuperar contraseña
+        </ion-button>
+      </div>
+    </form>
+
+    <!-- Continuar sin cuenta -->
+    <div class="acciones-secundarias">
+      <ion-button expand="block" class="btn-gris" (click)="continuarSinCuenta()">
+        Continuar sin cuenta
+      </ion-button>
+      <p class="nota-sin-cuenta">Sin cuenta: datos solo<br />en este dispositivo</p>
+    </div>
+  </div>
+</ion-content>
